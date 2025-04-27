@@ -16,7 +16,7 @@ const request = async (endpoint: string, options: RequestInit) => {
         'Origin': window.location.origin,
         ...options.headers,
       },
-      mode: 'no-cors',
+      mode: 'cors',
     });
 
     if (!response.ok) {
