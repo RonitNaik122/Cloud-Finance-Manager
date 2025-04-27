@@ -9,6 +9,7 @@ import { Expense, Income } from "@/lib/types";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { format } from "date-fns";
+import { useSearchParams } from "react-router-dom";
 
 export function Transactions() {
   const { expenses, income, isLoading, error, deleteExpense, deleteIncome } = useTransactions();
@@ -18,12 +19,22 @@ export function Transactions() {
   const [dialogMode, setDialogMode] = useState<"create" | "edit">("create");
   const [transactionType, setTransactionType] = useState<"expense" | "income">("expense");
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
 
   // Debug the data structure
   useEffect(() => {
     console.log("Expenses data:", expenses);
     console.log("Income data:", income);
   }, [expenses, income]);
+
+  useEffect(() => {
+    const type = searchParams.get("type");
+    if (type === "income") {
+      handleAddNew("income");
+    } else if (type === "expense") {
+      handleAddNew("expense");
+    }
+  }, [searchParams]);
 
   const handleEdit = (transaction: Expense | Income, type: "expense" | "income") => {
     setSelectedTransaction(transaction);
@@ -201,7 +212,7 @@ export function Transactions() {
           )}
         </FloatingCard>
       </div>
-      
+    
       <TransactionDialog
         open={expenseDialogOpen}
         onOpenChange={setExpenseDialogOpen}

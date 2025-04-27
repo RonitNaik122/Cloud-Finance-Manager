@@ -29,6 +29,7 @@ const HoverCard = ({ className, children, ...props }: React.ComponentProps<typeo
   );
 };
 
+
 export function Dashboard() {
   const { user } = useAuth();
   const { toast } = useToast();
@@ -360,17 +361,13 @@ export function Dashboard() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Dashboard</h1>
         <div className="flex gap-2">
-          <Button asChild>
-            <Link to="/add-income">
-              <Plus className="mr-2 h-4 w-4" />
-              Add Income
-            </Link>
+          <Button onClick={() => navigate("/transactions?type=income")}>
+            <Plus className="mr-2 h-4 w-4" />
+            Add Income
           </Button>
-          <Button asChild variant="outline">
-            <Link to="/add-expense">
-              <Plus className="mr-2 h-4 w-4" />
-              Add Expense
-            </Link>
+          <Button variant="outline" onClick={() => navigate("/transactions?type=expense")}>
+            <Plus className="mr-2 h-4 w-4" />
+            Add Expense
           </Button>
         </div>
       </div>
