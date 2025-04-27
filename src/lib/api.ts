@@ -1,11 +1,25 @@
 import { useToast } from "@/hooks/use-toast";
 import { User, Expense, Income, Goal, Event } from "./types";
 
-const API_BASE_URL = "http://localhost:3000"; // Replace with your actual backend URL
+// Use proxy in development, direct URL in production
+const API_BASE_URL = import.meta.env.DEV
+  ? "/api"
+  : import.meta.env.VITE_API_BASE_URL; // Access env var
 
 const request = async (endpoint: string, options: RequestInit) => {
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': window.location.origin,
+        ...options.headers,
+      },
+      credentials: 'include',
+      mode: 'cors',
+    });
+
     if (!response.ok) {
       let errorMessage = `HTTP error! status: ${response.status}`;
       try {
@@ -18,15 +32,23 @@ const request = async (endpoint: string, options: RequestInit) => {
       }
       throw new Error(errorMessage);
     }
-    return await response.json();
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return await response.json();
+    }
+    return await response.text();
   } catch (error: any) {
+    if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+      throw new Error('Network error: Please check your internet connection and try again.');
+    }
     throw error;
   }
 };
 
 // User Authentication API calls
 export const userSignup = async (userData: any) => {
-  return request("/users/signup", {
+  return request("/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +58,7 @@ export const userSignup = async (userData: any) => {
 };
 
 export const userLogin = async (userData: any) => {
-  return request("/users/login", {
+  return request("/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -95,12 +117,24 @@ export const createExpense = async (userId: string, expenseData: any) => {
 };
 
 export const getExpenses = async (userId: string) => {
-  return request(`/expenses/${userId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (!userId) {
+    return [];
+  }
+  
+  try {
+    const response = await request(`/expenses/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    // Ensure we're returning an array of expense items
+    return Array.isArray(response) ? response : [];
+  } catch (error) {
+    console.error("Error fetching expense data:", error);
+    return [];
+  }
 };
 
 export const updateExpense = async (userId: string, expenseId: string, expenseData: any) => {
@@ -134,12 +168,24 @@ export const createIncome = async (userId: string, incomeData: any) => {
 };
 
 export const getIncome = async (userId: string) => {
-  return request(`/income/${userId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (!userId) {
+    return [];
+  }
+  
+  try {
+    const response = await request(`/income/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    // Ensure we're returning an array of income items
+    return Array.isArray(response) ? response : [];
+  } catch (error) {
+    console.error("Error fetching income data:", error);
+    return [];
+  }
 };
 
 export const getIncomeById = async (userId: string, incomeId: string) => {
@@ -230,12 +276,24 @@ export const createEvent = async (userId: string, eventData: any) => {
 };
 
 export const getEvents = async (userId: string) => {
-  return request(`/events/${userId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (!userId) {
+    return [];
+  }
+  
+  try {
+    const response = await request(`/events/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    // Ensure we're returning an array of events
+    return Array.isArray(response) ? response : [];
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
 };
 
 export const getEventById = async (userId: string, eventId: string) => {

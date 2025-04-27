@@ -1,4 +1,3 @@
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,6 +6,9 @@ import { Dashboard } from "@/pages/Dashboard";
 import { Transactions } from "@/pages/Transactions";
 import { Login } from "@/pages/Login";
 import { Profile } from "@/pages/Profile";
+import { Goals } from "@/pages/Goals";
+import { Events } from "@/pages/Events";
+import Analytics from "@/pages/Analytics";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
@@ -30,6 +32,27 @@ const App = () => {
               <ProtectedRoute>
                 <Layout>
                   <Transactions />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/goals" element={
+              <ProtectedRoute>
+                <Layout>
+                  <Goals />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/events" element={
+              <ProtectedRoute>
+                <Layout>
+                  <Events />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/analytics" element={
+              <ProtectedRoute>
+                <Layout>
+                  <Analytics />
                 </Layout>
               </ProtectedRoute>
             } />
