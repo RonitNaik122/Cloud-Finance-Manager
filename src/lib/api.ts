@@ -20,12 +20,6 @@ const request = async (endpoint: string, options: RequestInit) => {
     }
     return await response.json();
   } catch (error: any) {
-    const { toast } = useToast();
-    toast({
-      variant: "destructive",
-      title: "Error",
-      description: error.message,
-    });
     throw error;
   }
 };
