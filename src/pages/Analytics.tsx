@@ -218,36 +218,6 @@ export default function Analytics() {
           </FloatingCard>
           
           <div className="grid gap-4 md:grid-cols-2">
-            <FloatingCard>
-              <CardHeader>
-                <CardTitle>Expense Categories</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={categoryData}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={false}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                        nameKey="name"
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                      >
-                        {categoryData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip formatter={formatCurrency} />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </CardContent>
-            </FloatingCard>
             
             <FloatingCard>
               <CardHeader>
@@ -271,7 +241,7 @@ export default function Analytics() {
                       <Tooltip formatter={formatCurrency} />
                       <Legend />
                       <Bar dataKey="income" fill="#00C49F" name="Income" />
-                      <Bar dataKey="expenses" fill="#FF8042" name="Expenses" />
+                      <Bar dataKey="expense" fill="#FF8042" name="Expenses" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
