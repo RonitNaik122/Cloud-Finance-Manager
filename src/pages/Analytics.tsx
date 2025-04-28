@@ -210,7 +210,7 @@ export default function Analytics() {
                     <Tooltip formatter={formatCurrency} />
                     <Legend />
                     <Line type="monotone" dataKey="income" stroke="#00C49F" name="Income" />
-                    <Line type="monotone" dataKey="expenses" stroke="#FF8042" name="Expenses" />
+                    <Line type="monotone" dataKey="expense" stroke="#FF8042" name="Expenses" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
