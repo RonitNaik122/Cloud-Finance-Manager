@@ -172,5 +172,5 @@ amplify publish
 
 <div align="center">
   <p>Developed with ❤️ by Ronit Naik</p>
-  <p>Connect with me on <a href="www.linkedin.com/in/ronit-naik-0810j06">LinkedIn</a></p>
+  <p>Connect with me on <a href="https://www.linkedin.com/in/ronit-naik-0810j06">LinkedIn</a> | <a href="https://github.com/RonitNaik122">GitHub</a></p>
 </div>
