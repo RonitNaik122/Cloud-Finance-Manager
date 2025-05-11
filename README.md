@@ -25,7 +25,7 @@ This project was primarily built to explore and learn AWS cloud services while c
 <div align="center">
   <table>
     <tr>
-      <td><img src="./assets/dashboard2.png" alt="Dashboard View" /></td>
+      <td><img src="./assets/dashboard1.png" alt="Dashboard View" /></td>
       <td><img src="./assets/transaction.png" alt="Transactions" /></td>
     </tr>
     <tr>
