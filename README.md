@@ -1,7 +1,7 @@
 # FinFlow Harmony
 
 <div align="center">
-  <img src="finflow-harmony-portal/assets/dashboard1.png" alt="FinFlow Harmony Dashboard" width="700px" />
+  <img src="./assets/dashboard1.png" alt="FinFlow Harmony Dashboard" width="700px" />
   <p><em>Smart financial management with the 50/30/20 rule</em></p>
 </div>
 
@@ -25,16 +25,16 @@ This project was primarily built to explore and learn AWS cloud services while c
 <div align="center">
   <table>
     <tr>
-      <td><img src="finflow-harmony-portal/assets/dashboard2.png" alt="Dashboard View" /></td>
-      <td><img src="finflow-harmony-portal/assets/transaction.png" alt="Transactions" /></td>
+      <td><img src="./assets/dashboard2.png" alt="Dashboard View" /></td>
+      <td><img src="./assets/transaction.png" alt="Transactions" /></td>
     </tr>
     <tr>
-      <td><img src="finflow-harmony-portal/assets/goals.png" alt="Goals" /></td>
-      <td><img src="finflow-harmony-portal/assets/events_calender_view.png" alt="Events Calendar" /></td>
+      <td><img src="./assets/goals.png" alt="Goals" /></td>
+      <td><img src="./assets/events_calender_view.png" alt="Events Calendar" /></td>
     </tr>
     <tr>
-      <td><img src="finflow-harmony-portal/assets/analytics_monthly_range.png" alt="Monthly Analytics" /></td>
-      <td><img src="finflow-harmony-portal/assets/analytics_custom_range.png" alt="Custom Analytics" /></td>
+      <td><img src="./assets/analytics_monthly_range.png" alt="Monthly Analytics" /></td>
+      <td><img src="./assets/analytics_custom_range.png" alt="Custom Analytics" /></td>
     </tr>
   </table>
 </div>
@@ -57,9 +57,9 @@ This project was primarily built to explore and learn AWS cloud services while c
 <div align="center">
   <table>
     <tr>
-      <td><img src="finflow-harmony-portal/assets/dynamoDB.png" alt="DynamoDB Tables" width="300px" /></td>
-      <td><img src="finflow-harmony-portal/assets/lambda_functions.png" alt="Lambda Functions" width="300px" /></td>
-      <td><img src="finflow-harmony-portal/assets/api_gateway.png" alt="API Gateway" width="300px" /></td>
+      <td><img src="./assets/dynamoDB.png" alt="DynamoDB Tables" width="300px" /></td>
+      <td><img src="./assets/lambda_functions.png" alt="Lambda Functions" width="300px" /></td>
+      <td><img src="./assets/api_gateway.png" alt="API Gateway" width="300px" /></td>
     </tr>
   </table>
 </div>
